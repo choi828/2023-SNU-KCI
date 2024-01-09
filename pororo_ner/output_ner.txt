@@ -1,0 +1,7 @@
+/home/daewoong/koBERT/KoBERT-NER/test_ner.txt
+
+/home/daewoong/koBERT/KoBERT-NER/output_ner.txt
+
+/home/daewoong/koBERT/KoBERT-NER/model
+
+$ python3 predict.py --input_file /home/daewoong/koBERT/KoBERT-NER/sample_pred_in.txt --output_file /home/daewoong/koBERT/KoBERT-NER/output_ner.txt --model_dir /home/daewoong/koBERT/KoBERT-NER/model

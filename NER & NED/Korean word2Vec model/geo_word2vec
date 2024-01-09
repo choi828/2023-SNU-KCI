@@ -1,0 +1,31 @@
+import pandas as pd
+import spacy
+import gensim.models as gm
+
+# Load data from CSV file
+df = pd.read_csv('/Users/daewoong/Documents/서울대학교/NLP/연구 및 프로젝트/NER & NED/Geo Questions/newQuestions.csv')
+
+
+# Convert data to list of sentences
+sentences = [row.split() for row in df['A']]
+
+
+# Train Word2Vec model
+model = gm.Word2Vec(sentences, size=100, window=5, min_count=5, workers=4)
+
+# Save trained model
+model.save('model.bin')
+
+questions = "서초래미안 아파트의 입주년도는 언제야?"
+
+
+
+nlp = spacy.load('ko_core_news_sm')
+
+doc = nlp(questions)
+
+print(doc.ents[0].text)
+
+print(model.wv.most_similar(doc.ents[0].text, topn=5))
+
+
